@@ -7,11 +7,17 @@ from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sess
 from sqlalchemy.orm import DeclarativeBase, relationship
 from datetime import datetime
 # Don't need to memorize the above it is just the setup for the database (timestamp-49:24)
+from fastapi_users.db import SQLAlchemyUserDatabase, SQLAlchemyBaseUserTableUUID
+
 
 DATABASE_URL = "sqlite+aiosqlite:///./test.db"
 
 class Base(DeclarativeBase):
     pass
+
+class User(SQLAlchemyBaseUserTableUUID, Base):
+
+
 
 class Post(Base):
     __tablename__ = "posts"
